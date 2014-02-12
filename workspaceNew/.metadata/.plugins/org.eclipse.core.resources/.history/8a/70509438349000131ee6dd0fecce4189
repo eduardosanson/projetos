@@ -1,0 +1,24 @@
+package config;
+
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
+
+import entity.Campus;
+import entity.Endereco;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		AnnotationConfiguration cfg = new AnnotationConfiguration();
+		cfg.configure("config/mysql_hibernate.cfg.xml");
+		
+		new SchemaExport(cfg).create(true, true);
+		
+		Campus campus1 = new Campus(null, "Centro I");
+		campus1.setEndereco(new Endereco(null, "Rua dezenove", 20, null));
+		Campus campus2 = new Campus(null, "Centro II");
+		campus2.setEndereco(new Endereco(null, "Rua oitenta e um", 20, null));
+	}
+
+}

@@ -1,0 +1,23 @@
+package validator;
+
+public class ConverterCpf {
+	
+	public String cpfLimpo(String cpf){
+		String[] cpf1 = cpf.split("\\.-");
+		Integer i;
+ 		String cpflimpo = cpf1[1];
+		for(i = cpf1.length - 1;i>=1;i--){
+			cpflimpo += cpf1[i];
+		}
+		return cpflimpo;
+	}
+	
+	public static void main(String[] args) {
+		
+		String qqqq = "104.683.307-39";
+		String qq = new ConverterCpf().cpfLimpo(qqqq);
+		
+		System.out.println(qq);
+	}
+
+}

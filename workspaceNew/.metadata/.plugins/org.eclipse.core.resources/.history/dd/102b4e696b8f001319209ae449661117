@@ -1,0 +1,49 @@
+package manager;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+
+import persistence.AlunoDao;
+import entity.Aluno;
+
+@ManagedBean(name="aBean")
+@RequestScoped
+public class AlunoBean {
+	
+	private Aluno aluno;
+
+	
+	public AlunoBean() {
+		aluno = new Aluno();
+	}
+
+	public AlunoBean(Aluno aluno) {
+		super();
+		this.aluno = aluno;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+	
+	public String cadastrar(){
+		FacesContext fc = FacesContext.getCurrentInstance();
+		try {
+			AlunoDao ad = new AlunoDao();
+			ad.cadastrar(aluno);
+			fc.addMessage("formcadastro",new FacesMessage(FacesMessage.SEVERITY_INFO,"Cadastro","Aluno cadastrado com sucesso!"));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			fc.addMessage("formcadastro",new FacesMessage(FacesMessage.SEVERITY_INFO,"Cadastro","Erro ao cadastrar"));
+		}
+		return null;
+	}
+
+}

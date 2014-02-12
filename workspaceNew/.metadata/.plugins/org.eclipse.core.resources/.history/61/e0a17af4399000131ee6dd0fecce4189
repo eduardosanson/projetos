@@ -1,0 +1,44 @@
+package entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity(name="MATRICULA")
+public class Matricula {
+	
+	@Column(name="MATRICULA_ID")
+	private Integer matricula_id;
+	
+	@Column(name="MATRICULA")
+	private String 	matricula;
+	
+	public Matricula(Integer matricula_id, String matricula) {
+		super();
+		this.matricula_id = matricula_id;
+		this.matricula = matricula;
+	}
+
+	public Matricula() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getMatricula_id() {
+		return matricula_id;
+	}
+
+	public void setMatricula_id(Integer matricula_id) {
+		this.matricula_id = matricula_id;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+	
+	
+
+}

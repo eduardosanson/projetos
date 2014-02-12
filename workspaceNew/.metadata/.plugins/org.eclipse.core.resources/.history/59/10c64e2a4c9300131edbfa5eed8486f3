@@ -1,0 +1,83 @@
+package config;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
+
+import persistence.AlunoDao;
+import persistence.CampusDao;
+import entity.Aluno;
+import entity.Campus;
+import entity.Endereco;
+import entity.Materia;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		AnnotationConfiguration cfg = new AnnotationConfiguration();
+		cfg.configure("config/mysql_hibernate.cfg.xml");
+		
+		new SchemaExport(cfg).create(true, true);
+		
+		
+		//CRIANDO CAMPUS FICTICIOS !!!
+		Campus campus1 = new Campus(null, "Centro I");
+		campus1.setEndereco(new Endereco(null, "Rua dezenove", 20, null));
+		
+		Campus campus2 = new Campus(null, "Centro II");
+		campus2.setEndereco(new Endereco(null, "Rua oitenta e um", 150, null));
+		
+		Campus campus3 = new Campus(null, "Centro III");
+		campus3.setEndereco(new Endereco(null, "Rua Sem Nome", 984, null));
+		
+		CampusDao cpd = new CampusDao();
+		cpd.cadastrar(campus1);
+		cpd.cadastrar(campus2);
+		cpd.cadastrar(campus3);
+		//
+		
+		//CADASTRO DE CLIENTE
+		List<Campus> listacaCampus = new ArrayList<Campus>();
+		listacaCampus.add(campus1);
+		Aluno al = new Aluno(null, "Eduardo", "124", null, null);
+		Aluno al1 = new Aluno(null, "Adriano", "1245", null, null);
+		Aluno al2 = new Aluno(null, "Carlos", "12456", null, null);
+		Aluno al3 = new Aluno(null, "Pedro", "124567", null, null);
+		Aluno al4 = new Aluno(null, "Rafael", "1245678", null, null);
+		
+		AlunoDao ad = new AlunoDao();
+		
+		ad.cadastrar(al);
+		ad.cadastrar(al1);
+		ad.cadastrar(al2);
+		ad.cadastrar(al3);
+		ad.cadastrar(al4);
+		//
+		
+		//CADASTRO DE MATERIA
+		Materia ma = new Materia(null, "Segurança da informação", 6);
+		Materia ma1 = new Materia(null, "POO", 4);
+		Materia ma2 = new Materia(null, "Padrão de projetos", 6);
+		Materia ma3 = new Materia(null, "Gestão", 4);
+		Materia ma4 = new Materia(null, "Arquitetura de Sistemas", 4);
+		Materia ma5 = new Materia(null, "Ciencia da Computação", 4);
+		Materia ma6 = new Materia(null, "Redes", 4);
+		Materia ma7 = new Materia(null, "SO", 4);
+		Materia ma8 = new Materia(null, "Analise de Sistemas", 2);
+		Materia ma9 = new Materia(null, "Paradigmas", 6);
+		Materia ma10 = new Materia(null, "Engearia de softwares", 2);
+		Materia ma11 = new Materia(null, "ooo", 2);
+		Materia ma12 = new Materia(null, "sasdaa", 2);
+		
+		
+		
+		
+		
+		
+	}
+
+}

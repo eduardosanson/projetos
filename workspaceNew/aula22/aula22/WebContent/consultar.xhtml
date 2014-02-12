@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+	<ui:define name="conteudo">
+	
+		<p:panel header="CONSULTAR PRODUTOS">
+			
+			<h:form id="formconsultar">
+				<h:panelGrid columns="5">
+					Nome: <p:inputText value="#{pBean.produto.nome}" />
+					Categoria: 
+					<p:selectOneMenu value="#{pBean.categoria.idCategoria}">
+						<f:selectItem itemValue="-1" itemLabel="TODAS" />
+						<f:selectItems value="#{pBean.listaCategoria}" />
+					</p:selectOneMenu> 
+					<p:commandButton value="Consultar" action="#{pBean.buscar}" 
+					update="formconsultar" />
+					<p:commandButton value="Relatorio por Nome" action="#{pBean.relatorio}" 
+					ajax="false" />
+				</h:panelGrid>
+				
+				<p:separator />
+				
+				<p:dataTable value="#{pBean.listaProduto}" var="prod" 
+				emptyMessage="BUSCAR NÃO REALIZADA">
+					<p:column headerText="NOME">
+						<h:outputText value="#{prod.nome}" />
+					</p:column>
+					<p:column headerText="ESTOQUE">
+						<h:outputText value="#{prod.estoque}" />
+					</p:column>
+					<p:column headerText="VALOR">
+						<h:outputText value="#{prod.valor}" />
+					</p:column>
+					<p:column headerText="NOME CATEGORIA">
+						<h:outputText value="#{prod.categoria.nomeCategoria}" />
+					</p:column>
+				</p:dataTable>
+				<p:growl />
+			</h:form>
+			
+		</p:panel>
+	
+	</ui:define>
+</ui:composition>
+</html>

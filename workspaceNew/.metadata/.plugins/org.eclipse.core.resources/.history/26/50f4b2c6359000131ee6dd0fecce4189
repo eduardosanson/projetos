@@ -1,0 +1,100 @@
+package entity;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+@Entity(name="IDENTIFICADOR")
+public class Identificador {
+	
+	@Id
+	@Column(name="IDENTIFICADOR_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer identificador_Id;
+	
+	@OneToMany(mappedBy="curso_Id")
+	@Column(name="CURSO_ID")
+	private List<Curso> curso_id;
+	
+	@OneToMany(mappedBy="campus_Id")
+	@Column(name="CAMPUS_ID")
+	private List<Campus> campus_id;
+	
+	@Column(name="ALUNO_ID")
+	@OneToMany(mappedBy="aluno_Id")
+	private List<Aluno> aluno_id;
+	
+	@ManyToMany(mappedBy="materia_Id")
+	@Column(name="MATERIA")
+	private List<Materia> materia;
+	
+	public Identificador() {
+
+	}
+
+	
+		
+	public Identificador(Integer identificador_Id, List<Curso> curso_id,
+			List<Campus> campus_id, List<Aluno> aluno_id, List<Materia> materia) {
+		super();
+		this.identificador_Id = identificador_Id;
+		this.curso_id = curso_id;
+		this.campus_id = campus_id;
+		this.aluno_id = aluno_id;
+		this.materia = materia;
+	}
+
+
+
+	public void setCampus_id(List<Campus> campus_id) {
+		this.campus_id = campus_id;
+	}
+
+	public List<Curso> getCurso_id() {
+		return curso_id;
+	}
+
+	public void setCurso_id(List<Curso> curso_id) {
+		this.curso_id = curso_id;
+	}
+
+	public Integer getIdentificador_Id() {
+		return identificador_Id;
+	}
+
+	public void setIdentificador_Id(Integer identificador_Id) {
+		this.identificador_Id = identificador_Id;
+	}
+
+	public List<Aluno> getAluno_id() {
+		return aluno_id;
+	}
+
+	public void setAluno_id(List<Aluno> aluno_id) {
+		this.aluno_id = aluno_id;
+	}
+
+	public List<Campus> getCampus_id() {
+		return campus_id;
+	}
+
+	public List<Materia> getMateria() {
+		return materia;
+	}
+
+	public void setMateria(List<Materia> materia) {
+		this.materia = materia;
+	}
+	
+	
+
+}

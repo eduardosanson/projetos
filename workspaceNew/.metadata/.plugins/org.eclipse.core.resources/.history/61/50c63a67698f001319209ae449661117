@@ -1,0 +1,39 @@
+package manager;
+
+import persistence.AlunoDao;
+import entity.Aluno;
+
+public class AlunoBean {
+	
+	private Aluno aluno;
+
+	
+	public AlunoBean() {
+		aluno = new Aluno();
+	}
+
+	public AlunoBean(Aluno aluno) {
+		super();
+		this.aluno = aluno;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+	
+	public String cadastrar(){
+		try {
+			AlunoDao ad = new AlunoDao();
+			ad.cadastrar(aluno);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}

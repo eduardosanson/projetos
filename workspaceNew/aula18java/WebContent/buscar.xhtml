@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+	<ui:define name="conteudo">
+	    <h:form id="form1">
+	    <p:panel header="BUSCAR PRODUTOS">
+	    	
+	    	<h:outputText value="Informe o nome do produto: " />
+	    	<p:inputText id="nome" value="#{pBean.produto.nome}">
+	    		<p:ajax event="keyup" listener="#{pBean.buscar}" update="dtDados" />
+	    	</p:inputText>
+	    	
+	    	<p:separator />
+	    	
+	    	<p:dataTable emptyMessage="Dados não encontrados!" 
+	    		value="#{pBean.listaP}" var="obj" id="dtDados">
+	    		
+	    		<p:column headerText="NOME">
+	    			<h:outputText value="#{obj.nome}" />
+	    		</p:column>
+	    		
+	    		<p:column headerText="ESTOQUE">
+	    			<h:outputText value="#{obj.estoque}" />
+	    		</p:column>
+	    		
+	    		<p:column headerText="VALOR">
+	    			<h:outputText value="#{obj.valor}" />
+	    		</p:column>
+	    		
+	    		<p:column headerText="CATEGORIA">
+	    			<h:outputText value="#{obj.categoria.nome}" />
+	    		</p:column>
+	    		
+	    	</p:dataTable>
+	    	
+	    </p:panel>
+	    </h:form>
+	</ui:define>
+</ui:composition>
+</html>
