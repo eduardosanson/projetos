@@ -1,28 +1,14 @@
 package persistence;
 
-import java.util.List;
-
-import org.hibernate.criterion.Restrictions;
 
 import entity.Campus;
 
-public class CampusDao extends Dao{
+public class CampusDao extends GenericDao<Campus, Integer>{
 
-	@Override
-	public void cadastrar(Object o) {
-		Campus cp = (Campus)o;
-		ses = HibernateUtil.getSessionFactory().openSession();
-		tran = ses.beginTransaction();
-		ses.save(cp);
-		tran.commit();
-		ses.close();
+	public CampusDao() {
+		super(new Campus());
+		// TODO Auto-generated constructor stub
 	}
+
 	
-
-	@Override
-	public void excluir(Object o) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
