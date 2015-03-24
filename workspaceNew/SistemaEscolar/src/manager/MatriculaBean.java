@@ -26,7 +26,7 @@ public class MatriculaBean {
 	public List<SelectItem> getListaCurso() {
 		listaCurso = new ArrayList<SelectItem>();
 		try {
-			for(Curso c : new CursoDao().listar()){
+			for(Curso c : new CursoDao().listaDeCursos()){
 				SelectItem si = new SelectItem(c.getCurso_Id(), c.getNome());
 				listaCurso.add(si);
 			}

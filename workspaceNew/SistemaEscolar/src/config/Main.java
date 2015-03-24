@@ -1,10 +1,13 @@
 package config;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
+import org.primefaces.component.calendar.Calendar;
 
 import persistence.AlunoDao;
 import persistence.CampusDao;
@@ -26,9 +29,6 @@ public class Main {
 		new SchemaExport(cfg).create(true, true);
 		
 		
-		
-		try {
-			
 		////////////////////////////CRIANDO CAMPUS FICTICIOS////////////////////////////////
 		Campus campus1 = new Campus(null, "Centro I");
 		campus1.setEndereco(new Endereco(null, "Rua dezenove", 20, null));
@@ -40,9 +40,9 @@ public class Main {
 		campus3.setEndereco(new Endereco(null, "Rua Sem Nome", 984, null));
 		
 		CampusDao cpd = new CampusDao();
-		cpd.create(campus1);
-		cpd.create(campus2);
-		cpd.create(campus3);
+		cpd.cadastrar(campus1);
+		cpd.cadastrar(campus2);
+		cpd.cadastrar(campus3);
 		
 		
 		/////////////////////////////CADASTRO DE CLIENTE////////////////////////////////////
@@ -56,11 +56,11 @@ public class Main {
 		
 		AlunoDao ad = new AlunoDao();
 		
-		ad.create(al);
-		ad.create(al1);
-		ad.create(al2);
-		ad.create(al3);
-		ad.create(al4);
+		ad.cadastrar(al);
+		ad.cadastrar(al1);
+		ad.cadastrar(al2);
+		ad.cadastrar(al3);
+		ad.cadastrar(al4);
 		
 		
 		//////////////////////////////////////CADASTRO DE MATERIA//////////////////////////////
@@ -80,21 +80,21 @@ public class Main {
 		
 		MateriaDao md = new MateriaDao();
 		
-		md.create(ma);
-		md.create(ma1);
-		md.create(ma2);
-		md.create(ma3);
-		md.create(ma4);
-		md.create(ma5);
-		md.create(ma6);
-		md.create(ma7);
-		md.create(ma8);
-		md.create(ma9);
-		md.create(ma10);
-		md.create(ma11);
-		md.create(ma12);
+		md.cadastrar(ma);
+		md.cadastrar(ma1);
+		md.cadastrar(ma2);
+		md.cadastrar(ma3);
+		md.cadastrar(ma4);
+		md.cadastrar(ma5);
+		md.cadastrar(ma6);
+		md.cadastrar(ma7);
+		md.cadastrar(ma8);
+		md.cadastrar(ma9);
+		md.cadastrar(ma10);
+		md.cadastrar(ma11);
+		md.cadastrar(ma12);
 		
-		List<Materia> listaMateria = md.listar();
+		List<Materia> listaMateria = md.listaDeMateria();
 		
 		///////////////////////////////CRIANDO CURSOS FICTICIOS///////////////////////////////
 		Curso c1 = new Curso(null, "Sistema de Informação");
@@ -110,16 +110,13 @@ public class Main {
 		
 		CursoDao crsd = new CursoDao();
 		
-		crsd.create(c1);
-		crsd.create(c2);
-		crsd.create(c3);
-		crsd.create(c4);
-		crsd.create(c5);
+		crsd.cadastrar(c1);
+		crsd.cadastrar(c2);
+		crsd.cadastrar(c3);
+		crsd.cadastrar(c4);
+		crsd.cadastrar(c5);
 		
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
+		
 		
 		
 		

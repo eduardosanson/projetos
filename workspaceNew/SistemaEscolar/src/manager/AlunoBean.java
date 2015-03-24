@@ -49,7 +49,7 @@ public class AlunoBean {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		try {
 			AlunoDao ad = new AlunoDao();
-			ad.create(aluno);
+			ad.cadastrar(aluno);
 			fc.addMessage("formcadastro",new FacesMessage("Aluno cadastrado com sucesso!"));
 			aluno = new Aluno();
 		} catch (Exception e) {
@@ -63,7 +63,7 @@ public class AlunoBean {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		try {
 			AlunoDao ad = new AlunoDao();
-			listaDeAluno.add(ad.buscarPorCpf(aluno)) ;
+			listaDeAluno = ad.buscarPorCpf(aluno.getCpf());
 						
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,7 +75,7 @@ public class AlunoBean {
 	public String buscarUmPorCpf(String cpf){
 		try {
 			AlunoDao ad = new AlunoDao();
-			aluno = ad.buscarPorCpf(aluno);
+			aluno = ad.buscarUmPorCpf(cpf);
 			
 			
 		} catch (Exception e) {
