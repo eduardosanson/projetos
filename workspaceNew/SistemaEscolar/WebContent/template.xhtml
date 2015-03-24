@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+
+	<h:form id="formmenu">
+		<p:menubar>
+			<p:menuitem value="Home" url="painel.jsf" />
+
+			<p:menuitem value="Cadastro" onclick="cadastroAluno.show();" />
+			<p:submenu label="Matricula">
+				<p:menuitem value="Matrícular aluno" url="matricular.jsf" />
+				<p:separator />
+				<p:menuitem value="Trancar Matrícula" url="trancar.jsf" />
+				<p:separator />
+				<p:menuitem value="Materias Matriculadas" url="materias.jsf" />
+				<p:separator />
+				<p:menuitem value="Adicionar Matérias" url="materias.jsf" />
+				<p:separator />
+				<p:menuitem value="Excluir Matérias" url="materias.jsf" />
+			</p:submenu>
+
+			<p:submenu label="Academico">
+				<p:menuitem value="Verificar CR" url="verificarcr.jsf" />
+				<p:separator />
+				<p:menuitem value="Boletim Sem" url="boletim.jsf" />
+				<p:separator />
+				<p:menuitem value="Boletim Geral" url="boletimgeral.jsf" />
+			</p:submenu>
+
+			<p:submenu label="Financeiro">
+				<p:menuitem value="Gerar Boleto" url="gerarboleto.jsf" />
+				<p:separator />
+				<p:menuitem value="Parcelar Mensalidade" url="parcmensalidade.jsf" />
+			</p:submenu>
+		</p:menubar>
+
+	</h:form>
+	<ui:insert name="conteudo">
+	Area de Conteudo dinâmico
+	</ui:insert>
+	
+				<p:dialog widgetVar="cadastroAluno" modal="true" styleClass="topo" header="CADASTRO DE ALUNO">
+					<h:form id="formcadastro">
+						<p:fieldset legend="Cadastro de Aluno">
+							<h:panelGrid columns="2">
+								<h:outputText value="Nome:"/>
+								<h:inputText value="#{aBean.aluno.nome}"/>
+								
+								<h:outputText value="CPF:"/>
+								<p:inputMask mask="999.999.999-99" value="#{aBean.aluno.cpf}"/>
+								
+								<h:outputText value="Data de Nascimento:"/>
+								<p:calendar navigator="true" pattern="dd/MM/yyyy" locale="pt" value="#{aBean.aluno.nasc}"/>
+											
+							</h:panelGrid>
+							<p:commandButton value="Cadastrar" action="#{aBean.cadastrar}" update="formcadastro"/>
+							<p:messages/>
+						</p:fieldset>
+						
+					</h:form>
+				
+				</p:dialog>
+
+</h:body>
+
+</html>

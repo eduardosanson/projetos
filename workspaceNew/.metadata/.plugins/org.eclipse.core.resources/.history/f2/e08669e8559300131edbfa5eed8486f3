@@ -1,0 +1,47 @@
+package manager;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+import entity.Curso;
+
+@ManagedBean(name="mBean")
+@RequestScoped
+public class MatriculaBean {
+	
+	private Curso curso;
+	
+	private List<Curso> listaCurso;
+	
+	public MatriculaBean() {
+		curso = new Curso();
+		listaCurso = new ArrayList<Curso>();
+	}
+	
+	public List<Curso> getListaCurso() {
+		return listaCurso;
+	}
+
+	public void setListaCurso(List<Curso> listaCurso) {
+		this.listaCurso = listaCurso;
+	}
+
+	public MatriculaBean(Curso curso) {
+		super();
+		this.curso = curso;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+	
+	
+
+}

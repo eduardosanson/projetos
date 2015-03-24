@@ -1,0 +1,35 @@
+package entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name="MATRICULA")
+public class Matricula {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="MATRICULA_ID")
+	private Integer matricula_id;
+
+	public Matricula(Integer matricula_id) {
+		super();
+		this.matricula_id = matricula_id;
+	}
+
+	public Integer getMatricula_id() {
+		return matricula_id;
+	}
+
+	public void setMatricula_id(Integer matricula_id) {
+		this.matricula_id = matricula_id;
+	}
+	
+	
+	
+
+	
+
+}

@@ -1,0 +1,35 @@
+package persistence;
+
+import org.hibernate.criterion.Restrictions;
+
+import entity.Materia;
+
+public class MateriaDao extends Dao {
+
+	@Override
+	public void cadastrar(Object o) {
+		Materia m = new Materia();
+		m = (Materia)o;
+		ses = HibernateUtil.getSessionFactory().openSession();
+		tran = ses.beginTransaction();
+		ses.save(m);
+		tran.commit();
+		ses.close();
+	}
+	
+	public Integer getId(String nomeCurso){
+		ses = HibernateUtil.getSessionFactory().openSession();
+		cri = ses.createCriteria(Restrictions.eq("nome", nomeCurso));
+		
+		
+		return null;
+		
+	}
+
+	@Override
+	public void excluir(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

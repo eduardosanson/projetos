@@ -1,0 +1,19 @@
+package validator;
+
+public class ConverterCpf {
+	
+	public String cpfLimpo(String cpf){
+		cpf = cpf.replace(".", "");
+		
+		return cpf;
+	}
+	
+	public static void main(String[] args) {
+		
+		String qqqq = "104.683.307-39";
+		String qq = new ConverterCpf().cpfLimpo(qqqq);
+		
+		System.out.println(qq);
+	}
+
+}

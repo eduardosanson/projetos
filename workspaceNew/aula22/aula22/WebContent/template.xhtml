@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+	<style>
+		.ui-widget-header{
+			background: #336699;
+			color: #FFF;
+		}
+	</style>
+	</h:head>
+	<h:body>
+		
+		<h:form>
+			<p:menubar>
+				<p:menuitem value="HOME" url="painel.jsf" />
+				<p:submenu label="PRODUTOS">
+					<p:menuitem value="CADASTRAR" onclick="telaprodutos.show();" />
+					<p:separator />
+					<p:menuitem value="CONSULTAR" url="consultar.jsf" />
+				</p:submenu>
+			</p:menubar>
+		</h:form>
+		
+		<br />
+		
+		<ui:insert name="conteudo">
+			AREA DE CONTEUDO DINAMICO
+		</ui:insert>
+		
+		
+		<p:dialog widgetVar="telaprodutos" modal="true" styleClass="topo" header="PAINEL DE PRODUTOS">
+			<h:form id="formprodutos">		
+				<p:fieldset legend="NOVO PRODUTO">
+					<h:panelGrid columns="2">
+					
+						<h:outputText value="Nome: " />
+						<p:inputText value="#{pBean.produto.nome}" />
+						
+						<h:outputText value="Estoque: " />
+						<p:spinner value="#{pBean.produto.estoque}" />
+						
+						<h:outputText value="Preço: " />
+						<p:inputText value="#{pBean.produto.valor}" />
+						
+						<h:outputText value="Validade: " />
+						<p:calendar navigator="true" pattern="dd/MM/yyyy" locale="pt" 
+						value="#{pBean.produto.validade}" />
+						
+						<h:outputText value="Categoria: " />
+						<p:selectOneMenu value="#{pBean.categoria.idCategoria}">
+							<f:selectItems value="#{pBean.listaCategoria}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+					<p:commandButton value="Cadastrar" action="#{pBean.cadastrar}" 
+					update="formprodutos" />
+					<p:messages />
+				</p:fieldset>
+			</h:form>		
+		</p:dialog>
+		
+	</h:body>
+
+</html>

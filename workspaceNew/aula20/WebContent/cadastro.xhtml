@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+	</h:head>
+
+	<h:body>
+
+		<h:form id="form1">
+			
+			<p:panel header="PAINEL DE CLIENTES">
+			
+				<h:panelGrid columns="2">
+					<h:outputText value="Cpf: " />
+					<p:inputMask mask="999.999.999-99" value="#{pBean.cliente.cpf}" />
+					
+					<h:outputText value="Nome: " />
+					<p:inputText value="#{pBean.cliente.nome}" />
+					
+					<h:outputText value="Idade: " />
+					<p:spinner max="120" value="#{pBean.cliente.idade}" />
+										
+				</h:panelGrid>
+				
+				<p:separator />
+				
+				<p:dataTable value="#{pBean.lista}" var="prod" 
+				selection="#{pBean.selecionados}">
+				
+					<p:column style="width: 15px" selectionMode="multiple"></p:column>
+				
+					<p:column headerText="PRODUTO">
+						<h:outputText value="#{prod.nome}" />
+					</p:column>
+					
+					<p:column headerText="VALOR">
+						<h:outputText value="#{prod.valor}">
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+				
+				<f:facet name="footer">
+					<p:commandButton value="Gerar Pedido"
+					action="#{pBean.cadastrar}" update="form1" />
+				</f:facet>
+			</p:panel>
+			<p:growl showDetail="true" showSummary="true" />
+		</h:form>	
+	
+	</h:body>
+	
+</html>

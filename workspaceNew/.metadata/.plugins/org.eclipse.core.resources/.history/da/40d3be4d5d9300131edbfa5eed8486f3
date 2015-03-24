@@ -1,0 +1,15 @@
+package validator;
+
+public class ConverterCpf {
+	
+	public String cpfLimpo(String cpf){
+		String[] cpf1 = cpf.split(".-");
+		Integer i = cpf1.length;
+		
+		for(;i<=0;i--){
+			
+		}
+		return cpflimpo;
+	}
+
+}

@@ -1,0 +1,31 @@
+package manager;
+
+import entity.Aluno;
+
+public class AlunoBean {
+	
+	private Aluno aluno;
+
+	
+	public AlunoBean() {
+		aluno = new Aluno();
+	}
+
+	public AlunoBean(Aluno aluno) {
+		super();
+		this.aluno = aluno;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+	
+	public void cadastrar(){
+		
+	}
+
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+	<ui:define name="conteudo">
+	    <h:form id="form1">
+	    <p:panel header="RELATORIO DE PRODUTOS">
+	    	
+	    	<h:outputText value="Informe o produto: " />
+	    	<p:inputText value="#{pBean.produto.nome}" />
+	    	<p:commandButton value="Gerar Relatorio" action="#{pBean.relatorio}" 
+	    	ajax="false" />
+	    	
+	    </p:panel>
+	    </h:form>
+	</ui:define>
+</ui:composition>
+</html>
