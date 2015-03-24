@@ -1,0 +1,30 @@
+package manager;
+
+import entity.Curso;
+
+public class MatriculaBean {
+	
+	private Curso curso;
+	
+	
+	
+	public MatriculaBean() {
+		curso = new Curso();
+	}
+
+	public MatriculaBean(Curso curso) {
+		super();
+		this.curso = curso;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+	
+	
+
+}

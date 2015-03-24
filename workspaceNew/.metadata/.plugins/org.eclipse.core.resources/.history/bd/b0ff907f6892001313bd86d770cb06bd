@@ -1,0 +1,53 @@
+package entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity(name="MATRICULA")
+public class Matricula {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="MATRICULA_ID")
+	private Integer matricula_id;
+	
+	@ManyToOne
+	private Integer aluno_id;
+
+	public Matricula(Integer matricula_id, Integer aluno_id) {
+		super();
+		this.matricula_id = matricula_id;
+		this.aluno_id = aluno_id;
+	}
+
+	public Matricula() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getMatricula_id() {
+		return matricula_id;
+	}
+
+	public void setMatricula_id(Integer matricula_id) {
+		this.matricula_id = matricula_id;
+	}
+
+	public Integer getAluno_id() {
+		return aluno_id;
+	}
+
+	public void setAluno_id(Integer aluno_id) {
+		this.aluno_id = aluno_id;
+	}
+
+		
+	
+
+	
+
+}

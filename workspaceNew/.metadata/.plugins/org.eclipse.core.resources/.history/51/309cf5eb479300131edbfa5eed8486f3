@@ -1,0 +1,17 @@
+package persistence;
+
+public class MateriaDao extends Dao {
+
+	@Override
+	public void cadastrar(Object o) {
+		
+		
+	}
+
+	@Override
+	public void excluir(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

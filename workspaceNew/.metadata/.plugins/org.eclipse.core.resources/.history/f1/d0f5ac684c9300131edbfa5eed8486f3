@@ -1,0 +1,24 @@
+package persistence;
+
+import entity.Materia;
+
+public class MateriaDao extends Dao {
+
+	@Override
+	public void cadastrar(Object o) {
+		Materia m = new Materia();
+		m = (Materia)o;
+		ses = HibernateUtil.getSessionFactory().openSession();
+		tran = ses.beginTransaction();
+		ses.save(m);
+		tran.commit();
+		ses.close();
+	}
+
+	@Override
+	public void excluir(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

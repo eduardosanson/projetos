@@ -1,0 +1,24 @@
+package persistence;
+
+import entity.Curso;
+
+public class CursoDao extends Dao {
+
+	@Override
+	public void cadastrar(Object o) {
+		Curso curso = (Curso)o;
+		ses = HibernateUtil.getSessionFactory().openSession();
+		tran = ses.beginTransaction();
+		ses.save(curso);
+		tran.commit();
+		ses.close();
+		
+	}
+
+	@Override
+	public void excluir(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

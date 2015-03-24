@@ -1,0 +1,34 @@
+package persistence;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import entity.Aluno;
+
+public class AlunoDao extends Dao {
+	
+	
+	Transaction t;
+	Session 	s;
+	Query		q;
+	Criteria  	c;
+	
+	public void cadastrar(Object o){
+			Aluno a = (Aluno)o;
+		
+			s = HibernateUtil.getSessionFactory().openSession();
+			t = s.beginTransaction();
+			s.save(a);
+			t.commit();
+			s.close();
+	}
+
+	@Override
+	public void excluir(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

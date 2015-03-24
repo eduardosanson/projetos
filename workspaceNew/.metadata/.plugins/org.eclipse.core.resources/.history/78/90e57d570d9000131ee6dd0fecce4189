@@ -1,0 +1,24 @@
+package persistence;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import entity.Aluno;
+
+public abstract class Dao {
+	
+	Transaction tran;
+	Session   	ses;
+	Criteria   	cri;
+	Query     	que;
+	
+	public abstract void cadastrar(Object o);
+	
+	public abstract void excluir(Object o);
+	
+}

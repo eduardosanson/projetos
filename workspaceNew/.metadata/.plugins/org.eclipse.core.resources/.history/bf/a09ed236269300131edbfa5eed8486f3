@@ -1,0 +1,30 @@
+package persistence;
+
+import entity.Aluno;
+
+public class AlunoDao extends Dao {
+	
+	
+	public void cadastrar(Object o){
+			Aluno a = new Aluno();
+			a = (Aluno)o;
+			ses = HibernateUtil.getSessionFactory().openSession();
+			tran = ses.beginTransaction();
+			ses.save(a);
+			tran.commit();
+			ses.close();
+	}
+
+	@Override
+	public void excluir(Object o) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void buscarPorCpf(String cpf){ 
+		ses = HibernateUtil.getSessionFactory().openSession();
+		
+		
+	}
+
+}

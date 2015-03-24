@@ -1,0 +1,112 @@
+package entity;
+
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class Aluno {
+	
+	@Id
+	@Column(name="ALUNO_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer	aluno_Id;
+	
+	@Column(name="NOME")
+	private String nome;
+	
+	@Column(name="CFP")
+	private String cpf;
+	
+	@Column(name="NASC")
+	@Temporal(TemporalType.DATE)
+	private Date  	nasc;
+	
+	@Column(name="MATRICULA")
+	private Integer matricula;
+	
+
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="ENDERECO_ID")
+	private Endereco endereco;
+	
+	@Override
+	public String toString() {
+		return "Aluno [aluno_Id=" + aluno_Id + ", nome=" + nome + ", cpf="
+				+ cpf + ", nasc=" + nasc + ", matricula=" + matricula + "]";
+	}
+		
+	public Aluno() {
+	
+	}
+
+	public Aluno(int aluno_Id, String nome, String cpf, Date nasc,
+			Integer matricula) {
+		super();
+		this.aluno_Id = aluno_Id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.nasc = nasc;
+		this.matricula = matricula;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public int getAluno_Id() {
+		return aluno_Id;
+	}
+
+	public void setAluno_Id(int aluno_Id) {
+		this.aluno_Id = aluno_Id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Date getNasc() {
+		return nasc;
+	}
+
+	public void setNasc(Date nasc) {
+		this.nasc = nasc;
+	}
+
+	public Integer getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Integer matricula) {
+		this.matricula = matricula;
+	}
+	
+	
+
+}

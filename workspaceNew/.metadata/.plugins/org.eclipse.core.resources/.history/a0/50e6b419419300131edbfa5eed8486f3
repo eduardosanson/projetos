@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+	<ui:define name="conteudo">
+		
+		<p:panel header="BUSCAR ALUNOS">
+		
+		<h:form id="formconsultarcpf">
+		
+				<h:outputText value="Digite o cpf do aluno:"/>
+				<p:inputText pattern="{999.999.999-99}" value="#{aBean.aluno.cpf}" id="cpf" autocomplete="true">
+				<p:ajax event="keyup" listener="#{aBean.buscarPorCpf}" update="formaluno"/>
+				</p:inputText>
+			
+			<p:separator/>		
+		
+			<p:dataTable value="#{aBean.listaDeAluno}" var="al" id="formaluno" 
+						emptyMessage="NENHUM ALUNO ENCONTRADO">
+			
+				<p:column headerText="NOME:">
+					
+					<p:commandLink value="#{al.nome}" id="nome" listener="#{aBean.buscarUmPorCpf}" update="tablematricula">
+						
+					</p:commandLink>
+					
+				</p:column>
+				
+			</p:dataTable>
+			<p:messages/>
+			
+			<p:dataTable listener="#{aBean.aluno}" id="tablematricula" emptyMessage="CLICK NO NOME DO ALUNO FAZER A MATRICULA">
+				
+				<p:column headerText="nome">
+					<h:outputText value="#{al.nome}"/>
+				</p:column>
+			
+			</p:dataTable>
+			
+			 <p:dialog widgetVar="telamatricula" header="MATRICULA DE ALUNO" >
+				<h:form id="formmatricula">
+					<p:fieldset legend="NOVA MATRICULA">
+						<h:panelGrid columns="2">
+						
+							<h:outputText value="NOME"/>
+							<h:outputText value="#{aBean.aluno.cpf}"/>
+							
+							<p:commandButton value="Matricular"/>
+						
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>	
+			</p:dialog>
+	
+		</h:form>
+	</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
